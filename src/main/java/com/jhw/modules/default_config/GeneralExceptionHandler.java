@@ -5,7 +5,13 @@
  */
 package com.jhw.modules.default_config;
 
+import com.clean.core.app.services.ExceptionHandler;
 import com.clean.core.app.services.ExceptionHandlerServiceFunctional;
+import com.clean.core.app.services.Notification;
+import com.clean.core.app.services.NotificationsGeneralType;
+import com.clean.core.domain.services.Resource;
+import com.jhw.utils.exceptions.ExceptionHandlerUtil;
+import java.io.File;
 
 /**
  *
@@ -13,9 +19,44 @@ import com.clean.core.app.services.ExceptionHandlerServiceFunctional;
  */
 public class GeneralExceptionHandler extends ExceptionHandlerServiceFunctional {
 
+    private final File file = new File("error_log");
+
+    public static GeneralExceptionHandler init() {
+        GeneralExceptionHandler excep = new GeneralExceptionHandler();
+        ExceptionHandler.registerExceptionHandlerService(excep);
+        return excep;
+    }
+
+    public GeneralExceptionHandler() {
+        addAll();
+    }
+
     @Override
     protected void addAll() {
-        addHandler(type, consumer);
+        addHandler(ExceptionsGeneralType.EXCEPTION_VALIDATION, (Exception e) -> {
+            System.out.println("Exception: " + e.getMessage());
+            Notification.showNotification(NotificationsGeneralType.NOTIFICATION_ERROR, e.getMessage());
+        });
+        addHandler(ExceptionsGeneralType.EXCEPTION_VALIDATION_X, (Exception e) -> {
+            System.out.println("Exception: " + e.getMessage());
+            Notification.showNotification(NotificationsGeneralType.NOTIFICATION_ERROR, e.getMessage());
+        });
+        addHandler(ExceptionsGeneralType.EXCEPTION_JPA_INTEGRITY, (Exception e) -> {
+            System.out.println("Exception: " + e.getMessage());
+            Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
+                    Resource.getString(ExceptionsGeneralType.MSG_JPA_INTEGRITY));
+        });
+        addHandler(ExceptionsGeneralType.EXCEPTION_JPA_NON_EXISTING_ENTITY, (Exception e) -> {
+            System.out.println("Exception: " + e.getMessage());
+            Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
+                    Resource.getString(ExceptionsGeneralType.MSG_JPA_NON_EXISTING_ENTITY));
+        });
+        addHandler(ExceptionsGeneralType.EXCEPTION, (Exception e) -> {
+            System.out.println("Exception: " + e.getMessage());
+            Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
+                    Resource.getString(ExceptionsGeneralType.MSG_JPA_NON_EXISTING_ENTITY));
+            ExceptionHandlerUtil.saveException(file, e);
+        });
     }
 
 }

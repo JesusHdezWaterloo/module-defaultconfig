@@ -12,6 +12,7 @@ public class DefaultConfigSwingModule implements AbstractSwingMainModule {
     public void register(AbstractSwingApplication app) {
         System.out.println("Creando 'Configuracion por defecto'");
         GeneralNotificationService.init();//notificacenes por defecto
+        GeneralExceptionHandler.init();
     }
 
     /**
