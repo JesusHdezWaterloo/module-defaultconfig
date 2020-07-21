@@ -9,6 +9,7 @@ import com.clean.core.app.services.ExceptionHandlerServiceFunctional;
 import com.clean.core.exceptions.ValidationException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import com.jhw.utils.jpa.NonExistingEntityException;
+import javax.persistence.RollbackException;
 import javax.validation.ConstraintViolationException;
 
 /**
@@ -25,9 +26,10 @@ public class ExceptionsGeneralType {
 
     //Excepcion de las validaciones del persistence como tal
     public static final String EXCEPTION_VALIDATION_X = ExceptionHandlerServiceFunctional.getExceptionType(ConstraintViolationException.class);
+    public static final String MSG_JAVAX_VALIDATION = "msg.default_config.error.javax.validation";
 
     //violacion de integridad, generalmente cuando se quiere crear un objeto que ya existe otro con igual unique
-    public static final String EXCEPTION_JPA_INTEGRITY = ExceptionHandlerServiceFunctional.getExceptionType(SQLIntegrityConstraintViolationException.class);
+    public static final String EXCEPTION_JPA_INTEGRITY = ExceptionHandlerServiceFunctional.getExceptionType(RollbackException.class);
     public static final String MSG_JPA_INTEGRITY = "msg.default_config.error.jpa_integrity";
 
     //cuando se va a eliminar o editar un entity que ya no existe

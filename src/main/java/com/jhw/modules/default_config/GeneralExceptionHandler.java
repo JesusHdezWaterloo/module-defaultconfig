@@ -34,25 +34,21 @@ public class GeneralExceptionHandler extends ExceptionHandlerServiceFunctional {
     @Override
     protected void addAll() {
         addHandler(ExceptionsGeneralType.EXCEPTION_VALIDATION, (Exception e) -> {
-            System.out.println("Exception: " + e.getMessage());
             Notification.showNotification(NotificationsGeneralType.NOTIFICATION_ERROR, e.getMessage());
         });
         addHandler(ExceptionsGeneralType.EXCEPTION_VALIDATION_X, (Exception e) -> {
-            System.out.println("Exception: " + e.getMessage());
-            Notification.showNotification(NotificationsGeneralType.NOTIFICATION_ERROR, e.getMessage());
+            Notification.showNotification(NotificationsGeneralType.NOTIFICATION_ERROR, 
+                    Resource.getString(ExceptionsGeneralType.MSG_JAVAX_VALIDATION));
         });
         addHandler(ExceptionsGeneralType.EXCEPTION_JPA_INTEGRITY, (Exception e) -> {
-            System.out.println("Exception: " + e.getMessage());
             Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
                     Resource.getString(ExceptionsGeneralType.MSG_JPA_INTEGRITY));
         });
         addHandler(ExceptionsGeneralType.EXCEPTION_JPA_NON_EXISTING_ENTITY, (Exception e) -> {
-            System.out.println("Exception: " + e.getMessage());
             Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
                     Resource.getString(ExceptionsGeneralType.MSG_JPA_NON_EXISTING_ENTITY));
         });
         addHandler(ExceptionsGeneralType.EXCEPTION, (Exception e) -> {
-            System.out.println("Exception: " + e.getMessage());
             Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
                     Resource.getString(ExceptionsGeneralType.MSG_JPA_NON_EXISTING_ENTITY));
             ExceptionHandlerUtil.saveException(file, e);

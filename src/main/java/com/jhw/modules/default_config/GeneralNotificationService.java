@@ -158,6 +158,8 @@ public class GeneralNotificationService extends NotificationServiceFunctional {
         String toString;
         if (obj == null) {
             toString = "";
+        } else if (obj instanceof String) {
+            return (String) obj;
         } else if (obj instanceof Formateable) {
             toString = ((Formateable) obj).format();
         } else {

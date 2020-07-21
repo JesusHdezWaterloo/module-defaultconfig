@@ -1,7 +1,9 @@
 package com.jhw.modules.default_config;
 
+import com.clean.core.app.services.ExceptionHandler;
 import com.clean.swing.app.AbstractSwingApplication;
 import com.clean.swing.app.AbstractSwingMainModule;
+import java.net.MalformedURLException;
 
 public class DefaultConfigSwingModule implements AbstractSwingMainModule {
 
@@ -11,8 +13,13 @@ public class DefaultConfigSwingModule implements AbstractSwingMainModule {
     @Override
     public void register(AbstractSwingApplication app) {
         System.out.println("Creando 'Configuracion por defecto'");
-        GeneralNotificationService.init();//notificacenes por defecto
         GeneralExceptionHandler.init();
+        GeneralNotificationService.init();//notificacenes por defecto
+        try {
+            GeneralResourceService.init();
+        } catch (MalformedURLException ex) {
+            ExceptionHandler.handleException(ex);
+        }
     }
 
     /**
