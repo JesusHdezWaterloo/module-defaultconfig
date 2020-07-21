@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.jhw.modules.default_config'
+
+//mainClassName = 'com.jhw.modules.default_config.Main'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13'
+        
+    implementation project(':utils')
+    implementation project(':clean-core')
+    implementation project(':clean-swing')
+    implementation project(':material-swing')
+}
