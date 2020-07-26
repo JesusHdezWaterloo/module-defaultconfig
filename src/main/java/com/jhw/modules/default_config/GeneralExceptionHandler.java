@@ -37,7 +37,7 @@ public class GeneralExceptionHandler extends ExceptionHandlerServiceFunctional {
             Notification.showNotification(NotificationsGeneralType.NOTIFICATION_ERROR, e.getMessage());
         });
         addHandler(ExceptionsGeneralType.EXCEPTION_VALIDATION_X, (Exception e) -> {
-            Notification.showNotification(NotificationsGeneralType.NOTIFICATION_ERROR, 
+            Notification.showNotification(NotificationsGeneralType.NOTIFICATION_ERROR,
                     Resource.getString(ExceptionsGeneralType.MSG_JAVAX_VALIDATION));
         });
         addHandler(ExceptionsGeneralType.EXCEPTION_JPA_INTEGRITY, (Exception e) -> {
@@ -50,7 +50,12 @@ public class GeneralExceptionHandler extends ExceptionHandlerServiceFunctional {
         });
         addHandler(ExceptionsGeneralType.EXCEPTION, (Exception e) -> {
             Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
-                    Resource.getString(ExceptionsGeneralType.MSG_JPA_NON_EXISTING_ENTITY));
+                    e.getMessage());
+            ExceptionHandlerUtil.saveException(file, e);
+        });
+        addHandler(ExceptionsGeneralType.EXCEPTION_MALFORMED_URL, (Exception e) -> {
+            Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
+                    "Error inesperado cargando recuros. Contacte con soporte");
             ExceptionHandlerUtil.saveException(file, e);
         });
     }

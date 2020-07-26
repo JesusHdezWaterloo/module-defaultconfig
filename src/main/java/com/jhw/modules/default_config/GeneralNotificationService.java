@@ -105,7 +105,6 @@ public class GeneralNotificationService extends NotificationServiceFunctional {
                         new ImageIcon(MaterialImages.EDIT)) == 0);
         super.addConfirmDialog(NotificationsGeneralType.CONFIRM_DELETE, (Object t)
                 -> showConfirmDialogDelete(t));
-
         super.addConfirmDialog(NotificationsGeneralType.CONFIRM_CANCEL, (Object t)
                 -> JOptionPane.showConfirmDialog(null, "Seguro desea cancelar ?",
                         "Cancel",
@@ -119,12 +118,12 @@ public class GeneralNotificationService extends NotificationServiceFunctional {
         super.addConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR, (Object t)
                 -> JOptionPane.showConfirmDialog(null, objectToString(t, false),
                         "Error",
-                        JOptionPane.OK_CANCEL_OPTION,
+                        JOptionPane.DEFAULT_OPTION,
                         JOptionPane.ERROR_MESSAGE) == 0);
         super.addConfirmDialog(NotificationsGeneralType.CONFIRM_INFO, (Object t)
                 -> JOptionPane.showConfirmDialog(null, objectToString(t, false),
                         "Información",
-                        JOptionPane.OK_CANCEL_OPTION,
+                        JOptionPane.DEFAULT_OPTION,
                         JOptionPane.INFORMATION_MESSAGE) == 0);
     }
 

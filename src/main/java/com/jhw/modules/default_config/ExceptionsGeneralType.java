@@ -7,8 +7,8 @@ package com.jhw.modules.default_config;
 
 import com.clean.core.app.services.ExceptionHandlerServiceFunctional;
 import com.clean.core.exceptions.ValidationException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import com.jhw.utils.jpa.NonExistingEntityException;
+import java.net.MalformedURLException;
 import javax.persistence.RollbackException;
 import javax.validation.ConstraintViolationException;
 
@@ -35,5 +35,7 @@ public class ExceptionsGeneralType {
     //cuando se va a eliminar o editar un entity que ya no existe
     public static final String EXCEPTION_JPA_NON_EXISTING_ENTITY = ExceptionHandlerServiceFunctional.getExceptionType(NonExistingEntityException.class);
     public static final String MSG_JPA_NON_EXISTING_ENTITY = "msg.default_config.error.jpa_non_existing_entity";
+
+    public static final String EXCEPTION_MALFORMED_URL = ExceptionHandlerServiceFunctional.getExceptionType(MalformedURLException.class);
 
 }

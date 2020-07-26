@@ -3,6 +3,7 @@ package com.jhw.modules.default_config;
 import com.clean.core.app.services.ExceptionHandler;
 import com.clean.core.app.services.Notification;
 import com.clean.core.app.services.NotificationsGeneralType;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -11,9 +12,10 @@ import com.clean.core.app.services.NotificationsGeneralType;
 public class MainTest {
 
     public static void main(String args[]) throws Exception {
-        new DefaultConfigSwingModule().register(null);
-        Notification.showNotification(NotificationsGeneralType.CONFIRM_CANCEL, "123");
-
+        JOptionPane.showConfirmDialog(null, "123",
+                "Información",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE);
         /*try {
             System.out.println("hi");
             int a = 5 / 0;
