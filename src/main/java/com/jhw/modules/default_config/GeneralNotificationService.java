@@ -6,12 +6,15 @@
 package com.jhw.modules.default_config;
 
 import com.clean.core.app.services.NotificationServiceFunctional;
-import com.jhw.swing.material.standars.MaterialIcons;
+import com.jhw.swing.material.standards.MaterialIcons;
 import com.jhw.swing.notification.toast.types.notification.DialogNotificationToastGeneral;
-import com.jhw.swing.personalization.PersonalizationMaterial;
+import com.jhw.personalization.core.domain.Personalization;
+import com.jhw.personalization.services.PersonalizationHandler;
 import com.clean.core.app.services.NotificationsGeneralType;
 import com.clean.core.app.services.Notification;
-import com.jhw.swing.material.standars.MaterialImages;
+import com.jhw.personalization.core.domain.Personalization;
+import com.jhw.personalization.services.PersonalizationHandler;
+import com.jhw.swing.material.standards.MaterialImages;
 import com.jhw.utils.interfaces.Formateable;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -38,52 +41,52 @@ public class GeneralNotificationService extends NotificationServiceFunctional {
     protected void addNotifications() {
         super.addNotification(NotificationsGeneralType.NOTIFICATION_ERROR, (Object t) -> {
             DialogNotificationToastGeneral.from(
-                    PersonalizationMaterial.getInstance().getSecondsActive(),
+                    PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION),
                     objectToString(t),
                     MaterialIcons.BLOCK,
-                    PersonalizationMaterial.getInstance().getColorError());
+                    PersonalizationHandler.getColor(Personalization.KEY_COLOR_ERROR));
         });
         super.addNotification(NotificationsGeneralType.NOTIFICATION_SUCCESS, (Object t) -> {
             DialogNotificationToastGeneral.from(
-                    PersonalizationMaterial.getInstance().getSecondsActive(),
+                    PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION),
                     objectToString(t),
                     MaterialIcons.CHECK,
-                    PersonalizationMaterial.getInstance().getColorDone());
+                    PersonalizationHandler.getColor(Personalization.KEY_COLOR_DONE));
         });
         super.addNotification(NotificationsGeneralType.NOTIFICATION_CREATE, (Object t) -> {
             DialogNotificationToastGeneral.from(
-                    PersonalizationMaterial.getInstance().getSecondsActive(),
+                    PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION),
                     "Elemento " + objectToString(t) + "CREADO exitosamente",
                     MaterialIcons.ADD,
-                    PersonalizationMaterial.getInstance().getColorDone());
+                    PersonalizationHandler.getColor(Personalization.KEY_COLOR_DONE));
         });
         super.addNotification(NotificationsGeneralType.NOTIFICATION_DELETE, (Object t) -> {
             DialogNotificationToastGeneral.from(
-                    PersonalizationMaterial.getInstance().getSecondsActive(),
+                    PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION),
                     "Elemento " + objectToString(t) + "ELIMINADO exitosamente",
                     MaterialIcons.DELETE_FOREVER,
-                    PersonalizationMaterial.getInstance().getColorError());
+                    PersonalizationHandler.getColor(Personalization.KEY_COLOR_ERROR));
         });
         super.addNotification(NotificationsGeneralType.NOTIFICATION_EDIT, (Object t) -> {
             DialogNotificationToastGeneral.from(
-                    PersonalizationMaterial.getInstance().getSecondsActive(),
+                    PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION),
                     "Elemento " + objectToString(t) + "EDITADO exitosamente",
                     MaterialIcons.EDIT,
-                    PersonalizationMaterial.getInstance().getColorInfo());
+                    PersonalizationHandler.getColor(Personalization.KEY_COLOR_INFO));
         });
         super.addNotification(NotificationsGeneralType.NOTIFICATION_INFO, (Object t) -> {
             DialogNotificationToastGeneral.from(
-                    PersonalizationMaterial.getInstance().getSecondsActive(),
+                    PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION),
                     objectToString(t),
                     MaterialIcons.INFO_OUTLINE,
-                    PersonalizationMaterial.getInstance().getColorInfo());
+                    PersonalizationHandler.getColor(Personalization.KEY_COLOR_INFO));
         });
         super.addNotification(NotificationsGeneralType.NOTIFICATION_WARNING, (Object t) -> {
             DialogNotificationToastGeneral.from(
-                    PersonalizationMaterial.getInstance().getSecondsActive(),
+                    PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION),
                     objectToString(t),
                     MaterialIcons.WARNING,
-                    PersonalizationMaterial.getInstance().getColorWarning());
+                    PersonalizationHandler.getColor(Personalization.KEY_COLOR_WARNING));
         });
     }
 
@@ -137,7 +140,7 @@ public class GeneralNotificationService extends NotificationServiceFunctional {
     private boolean showConfirmDialogDelete(Object obj) {
         String text = "Seguro desea eliminar " + objectToString(obj, false) + " ?";
         if (JOptionPane.showConfirmDialog(null, text, "Eliminar", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, MaterialIcons.DELETE_FOREVER.deriveIcon(36f)) == 0) {
-            if (PersonalizationMaterial.getInstance().isDouble_delete_check()) {
+            if (PersonalizationHandler.getBoolean(Personalization.KEY_USE_DOUBLE_DELETE_CHECK)) {
                 String conf = JOptionPane.showInputDialog(null, "Para confirmar introduzca la palabra: " + DELETE);
                 if (conf != null && conf.toUpperCase().matches(DELETE)) {
                     return true;

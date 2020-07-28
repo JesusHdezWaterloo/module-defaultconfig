@@ -12,16 +12,21 @@ import javax.swing.JOptionPane;
 public class MainTest {
 
     public static void main(String args[]) throws Exception {
-        JOptionPane.showConfirmDialog(null, "123",
-                "Información",
-                JOptionPane.DEFAULT_OPTION,
-                JOptionPane.INFORMATION_MESSAGE);
-        /*try {
-            System.out.println("hi");
-            int a = 5 / 0;
-        } catch (Exception e) {
-            ExceptionHandler.handleException(e);
-        }*/
+        String abc = "bajo la ceiba de la fraternidad, la de al lado de la casa blanca, a la hora de pedir un deseo, antes que scanol se vuelva invencible";
+        String cba = "";
+        for (int i = 0; i < abc.length(); i++) {
+            cba += abc.charAt(abc.length() - i - 1);
+        }
+        System.out.println(cba);
+        for (int i = 0; i < cba.length(); i++) {
+            if (cba.charAt(i) == ' ') {
+                System.out.print(".");
+            } else if (cba.charAt(i) == ',') {
+                System.out.print(",");
+            } else {
+                System.out.print((int) cba.charAt(i) - 96 + " ");
+            }
+        }
     }
 
 }
