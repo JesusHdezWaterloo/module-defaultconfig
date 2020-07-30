@@ -22,4 +22,5 @@ dependencies {
     implementation project(':material-personalization')
     
     implementation project(':material-swing')
+    implementation project(':material-notification')
 }

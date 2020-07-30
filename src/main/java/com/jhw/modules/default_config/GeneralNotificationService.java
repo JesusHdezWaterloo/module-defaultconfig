@@ -12,6 +12,7 @@ import com.jhw.personalization.core.domain.Personalization;
 import com.jhw.personalization.services.PersonalizationHandler;
 import com.clean.core.app.services.NotificationsGeneralType;
 import com.clean.core.app.services.Notification;
+import com.clean.core.domain.services.Resource;
 import com.jhw.personalization.core.domain.Personalization;
 import com.jhw.personalization.services.PersonalizationHandler;
 import com.jhw.swing.material.standards.MaterialImages;
@@ -87,6 +88,13 @@ public class GeneralNotificationService extends NotificationServiceFunctional {
                     objectToString(t),
                     MaterialIcons.WARNING,
                     PersonalizationHandler.getColor(Personalization.KEY_COLOR_WARNING));
+        });
+        super.addNotification(NotificationsGeneralType.NOTIFICATION_LOGIN, (Object t) -> {
+            DialogNotificationToastGeneral.from(
+                    PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION),
+                    Resource.getString("msg.default_config.login.welcome") + "\n" + objectToString(t),
+                    MaterialIcons.PERSON,
+                    PersonalizationHandler.getColor(Personalization.KEY_COLOR_INFO));
         });
     }
 
