@@ -20,6 +20,7 @@ public class ExceptionsGeneralType {
 
     //Excepcion general
     public static final String EXCEPTION = ExceptionHandlerServiceFunctional.getExceptionType(Exception.class);
+    public static final String MSG_EXCEPTION = "msg.default_config.error.exception";
 
     //Excepcion de las validaciones de clean, generalmente en el domain
     public static final String EXCEPTION_VALIDATION = ExceptionHandlerServiceFunctional.getExceptionType(ValidationException.class);
@@ -37,5 +38,6 @@ public class ExceptionsGeneralType {
     public static final String MSG_JPA_NON_EXISTING_ENTITY = "msg.default_config.error.jpa_non_existing_entity";
 
     public static final String EXCEPTION_MALFORMED_URL = ExceptionHandlerServiceFunctional.getExceptionType(MalformedURLException.class);
+    public static final String MSG_MALFORMED_URL = "msg.default_config.error.malformed_url";
 
 }

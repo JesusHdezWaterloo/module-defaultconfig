@@ -12,6 +12,7 @@ import com.clean.core.app.services.NotificationsGeneralType;
 import com.clean.core.domain.services.Resource;
 import com.jhw.utils.exceptions.ExceptionHandlerUtil;
 import java.io.File;
+import java.util.function.Consumer;
 
 /**
  *
@@ -48,16 +49,17 @@ public class GeneralExceptionHandler extends ExceptionHandlerServiceFunctional {
             Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
                     Resource.getString(ExceptionsGeneralType.MSG_JPA_NON_EXISTING_ENTITY));
         });
-        addHandler(ExceptionsGeneralType.EXCEPTION, (Exception e) -> {
-            Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
-                    e.getMessage());
-            ExceptionHandlerUtil.saveException(file, e);
-        });
         addHandler(ExceptionsGeneralType.EXCEPTION_MALFORMED_URL, (Exception e) -> {
             Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
-                    "Error inesperado cargando recuros. Contacte con soporte");
+                    Resource.getString(ExceptionsGeneralType.MSG_MALFORMED_URL));
             ExceptionHandlerUtil.saveException(file, e);
         });
+        addHandler(ExceptionsGeneralType.EXCEPTION, general);
     }
 
+    private final Consumer<Exception> general = (Exception e) -> {
+        Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
+                Resource.getString("msg.default_config.error.exception") + "\n" + e.getMessage());
+        ExceptionHandlerUtil.saveException(file, e);
+    };
 }
