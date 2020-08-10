@@ -22,6 +22,8 @@ public class ExceptionsGeneralType {
     public static final String EXCEPTION = ExceptionHandlerServiceFunctional.getExceptionType(Exception.class);
     public static final String MSG_EXCEPTION = "msg.default_config.error.exception";
 
+    public static final String EXCEPTION_RUNTIME = ExceptionHandlerServiceFunctional.getExceptionType(RuntimeException.class);
+
     //Excepcion de las validaciones de clean, generalmente en el domain
     public static final String EXCEPTION_VALIDATION = ExceptionHandlerServiceFunctional.getExceptionType(ValidationException.class);
 

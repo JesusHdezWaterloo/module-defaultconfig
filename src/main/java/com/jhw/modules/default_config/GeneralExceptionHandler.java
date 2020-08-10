@@ -54,6 +54,10 @@ public class GeneralExceptionHandler extends ExceptionHandlerServiceFunctional {
                     Resource.getString(ExceptionsGeneralType.MSG_MALFORMED_URL));
             ExceptionHandlerUtil.saveException(file, e);
         });
+        addHandler(ExceptionsGeneralType.EXCEPTION_RUNTIME, (Exception e) -> {
+            Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
+                    e.getMessage());
+        });
         addHandler(ExceptionsGeneralType.EXCEPTION, general);
     }
 
