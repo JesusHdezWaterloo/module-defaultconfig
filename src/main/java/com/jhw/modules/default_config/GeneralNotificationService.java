@@ -8,8 +8,6 @@ package com.jhw.modules.default_config;
 import com.clean.core.app.services.NotificationServiceFunctional;
 import com.jhw.swing.material.standards.MaterialIcons;
 import com.jhw.swing.notification.toast.types.notification.DialogNotificationToastGeneral;
-import com.jhw.personalization.core.domain.Personalization;
-import com.jhw.personalization.services.PersonalizationHandler;
 import com.clean.core.app.services.NotificationsGeneralType;
 import com.clean.core.app.services.Notification;
 import com.clean.core.domain.services.Resource;
