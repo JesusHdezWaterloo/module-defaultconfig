@@ -7,11 +7,10 @@ import java.net.MalformedURLException;
 
 public class DefaultConfigSwingModule implements AbstractSwingMainModule {
 
-    public DefaultConfigSwingModule() {
+    private DefaultConfigSwingModule() {
     }
 
-    @Override
-    public void register(AbstractSwingApplication app) {
+    public static DefaultConfigSwingModule init() {
         System.out.println("Creando 'Configuracion por defecto'");
         GeneralExceptionHandler.init();
         GeneralNotificationService.init();//notificacenes por defecto
@@ -20,6 +19,11 @@ public class DefaultConfigSwingModule implements AbstractSwingMainModule {
         } catch (MalformedURLException ex) {
             ExceptionHandler.handleException(ex);
         }
+        return new DefaultConfigSwingModule();
+    }
+
+    @Override
+    public void register(AbstractSwingApplication app) {
     }
 
     /**
