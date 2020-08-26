@@ -36,4 +36,7 @@ public class DefaultConfigSwingModule implements AbstractSwingMainModule {
     public void navigateTo(String string, Object... o) {
     }
 
+    public void closeModule() {
+    }
+
 }
