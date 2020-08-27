@@ -1,11 +1,10 @@
 package com.jhw.modules.default_config;
 
 import com.clean.core.app.services.ExceptionHandler;
-import com.clean.swing.app.AbstractSwingApplication;
-import com.clean.swing.app.AbstractSwingMainModule;
+import com.clean.swing.app.DefaultAbstractSwingMainModule;
 import java.net.MalformedURLException;
 
-public class DefaultConfigSwingModule implements AbstractSwingMainModule {
+public class DefaultConfigSwingModule extends DefaultAbstractSwingMainModule {
 
     private DefaultConfigSwingModule() {
     }
@@ -20,23 +19,6 @@ public class DefaultConfigSwingModule implements AbstractSwingMainModule {
             ExceptionHandler.handleException(ex);
         }
         return new DefaultConfigSwingModule();
-    }
-
-    @Override
-    public void register(AbstractSwingApplication app) {
-    }
-
-    /**
-     * Dont need navigation
-     *
-     * @param string
-     * @param o
-     */
-    @Override
-    public void navigateTo(String string, Object... o) {
-    }
-
-    public void closeModule() {
     }
 
 }
