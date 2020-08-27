@@ -134,6 +134,13 @@ public class GeneralNotificationService extends NotificationServiceFunctional {
                         "Información",
                         JOptionPane.DEFAULT_OPTION,
                         JOptionPane.INFORMATION_MESSAGE) == 0);
+        super.addConfirmDialog(NotificationsGeneralType.CONFIRM_GENERAL, (Object t)
+                -> JOptionPane.showConfirmDialog(null,
+                        objectToString(t, false),
+                        "Confirmar",
+                        JOptionPane.OK_CANCEL_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE,
+                        new ImageIcon(MaterialImages.QUESTION)) == 0);
     }
 
     @Override
