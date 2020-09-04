@@ -129,6 +129,11 @@ public class GeneralNotificationService extends NotificationServiceFunctional {
                         "Error",
                         JOptionPane.DEFAULT_OPTION,
                         JOptionPane.ERROR_MESSAGE) == 0);
+        super.addConfirmDialog(NotificationsGeneralType.CONFIRM_WARNING, (Object t)
+                -> JOptionPane.showConfirmDialog(null, objectToString(t, false),
+                        "Advertencia",
+                        JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.WARNING_MESSAGE) == 0);
         super.addConfirmDialog(NotificationsGeneralType.CONFIRM_INFO, (Object t)
                 -> JOptionPane.showConfirmDialog(null, objectToString(t, false),
                         "Información",
