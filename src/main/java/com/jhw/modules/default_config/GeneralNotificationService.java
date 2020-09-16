@@ -7,13 +7,14 @@ package com.jhw.modules.default_config;
 
 import com.clean.core.app.services.NotificationServiceFunctional;
 import com.jhw.swing.material.standards.MaterialIcons;
-import com.jhw.swing.notification.toast.types.notification.DialogNotificationToastGeneral;
 import com.clean.core.app.services.NotificationsGeneralType;
 import com.clean.core.app.services.Notification;
 import com.clean.core.domain.services.Resource;
 import com.jhw.personalization.core.domain.Personalization;
 import com.jhw.personalization.services.PersonalizationHandler;
 import com.jhw.swing.material.standards.MaterialImages;
+import com.jhw.swing.notification.NotificationBuilder;
+import com.jhw.swing.notification.NotificationFactory;
 import com.jhw.utils.interfaces.Formateable;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -39,60 +40,62 @@ public class GeneralNotificationService extends NotificationServiceFunctional {
     @Override
     protected void addNotifications() {
         super.addNotification(NotificationsGeneralType.NOTIFICATION_ERROR, (Object t) -> {
-            DialogNotificationToastGeneral.from(
-                    PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION),
-                    objectToString(t),
-                    MaterialIcons.BLOCK,
-                    PersonalizationHandler.getColor(Personalization.KEY_COLOR_ERROR));
+            NotificationFactory.buildNotificationTOAST(NotificationBuilder.builder().
+                    delaySeconds(PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION))
+                    .text(objectToString(t))
+                    .icon(MaterialIcons.BLOCK)
+                    .color(PersonalizationHandler.getColor(Personalization.KEY_COLOR_ERROR)));
+
         });
         super.addNotification(NotificationsGeneralType.NOTIFICATION_SUCCESS, (Object t) -> {
-            DialogNotificationToastGeneral.from(
-                    PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION),
-                    objectToString(t),
-                    MaterialIcons.CHECK,
-                    PersonalizationHandler.getColor(Personalization.KEY_COLOR_DONE));
+            NotificationFactory.buildNotificationTOAST(NotificationBuilder.builder().
+                    delaySeconds(PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION))
+                    .text(objectToString(t))
+                    .icon(MaterialIcons.CHECK)
+                    .color(PersonalizationHandler.getColor(Personalization.KEY_COLOR_DONE)));
+
         });
         super.addNotification(NotificationsGeneralType.NOTIFICATION_CREATE, (Object t) -> {
-            DialogNotificationToastGeneral.from(
-                    PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION),
-                    "Elemento " + objectToString(t) + "CREADO exitosamente",
-                    MaterialIcons.ADD,
-                    PersonalizationHandler.getColor(Personalization.KEY_COLOR_DONE));
+            NotificationFactory.buildNotificationTOAST(NotificationBuilder.builder().
+                    delaySeconds(PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION))
+                    .text("Elemento " + objectToString(t) + "CREADO exitosamente")
+                    .icon(MaterialIcons.ADD)
+                    .color(PersonalizationHandler.getColor(Personalization.KEY_COLOR_DONE)));
         });
         super.addNotification(NotificationsGeneralType.NOTIFICATION_DELETE, (Object t) -> {
-            DialogNotificationToastGeneral.from(
-                    PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION),
-                    "Elemento " + objectToString(t) + "ELIMINADO exitosamente",
-                    MaterialIcons.DELETE_FOREVER,
-                    PersonalizationHandler.getColor(Personalization.KEY_COLOR_ERROR));
+            NotificationFactory.buildNotificationTOAST(NotificationBuilder.builder().
+                    delaySeconds(PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION))
+                    .text("Elemento " + objectToString(t) + "ELIMINADO exitosamente")
+                    .icon(MaterialIcons.DELETE_FOREVER)
+                    .color(PersonalizationHandler.getColor(Personalization.KEY_COLOR_ERROR)));
         });
         super.addNotification(NotificationsGeneralType.NOTIFICATION_EDIT, (Object t) -> {
-            DialogNotificationToastGeneral.from(
-                    PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION),
-                    "Elemento " + objectToString(t) + "EDITADO exitosamente",
-                    MaterialIcons.EDIT,
-                    PersonalizationHandler.getColor(Personalization.KEY_COLOR_INFO));
+            NotificationFactory.buildNotificationTOAST(NotificationBuilder.builder().
+                    delaySeconds(PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION))
+                    .text("Elemento " + objectToString(t) + "EDITADO exitosamente")
+                    .icon(MaterialIcons.EDIT)
+                    .color(PersonalizationHandler.getColor(Personalization.KEY_COLOR_INFO)));
         });
         super.addNotification(NotificationsGeneralType.NOTIFICATION_INFO, (Object t) -> {
-            DialogNotificationToastGeneral.from(
-                    PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION),
-                    objectToString(t),
-                    MaterialIcons.INFO_OUTLINE,
-                    PersonalizationHandler.getColor(Personalization.KEY_COLOR_INFO));
+            NotificationFactory.buildNotificationTOAST(NotificationBuilder.builder().
+                    delaySeconds(PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION))
+                    .text(objectToString(t))
+                    .icon(MaterialIcons.INFO_OUTLINE)
+                    .color(PersonalizationHandler.getColor(Personalization.KEY_COLOR_INFO)));
         });
         super.addNotification(NotificationsGeneralType.NOTIFICATION_WARNING, (Object t) -> {
-            DialogNotificationToastGeneral.from(
-                    PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION),
-                    objectToString(t),
-                    MaterialIcons.WARNING,
-                    PersonalizationHandler.getColor(Personalization.KEY_COLOR_WARNING));
+            NotificationFactory.buildNotificationTOAST(NotificationBuilder.builder().
+                    delaySeconds(PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION))
+                    .text(objectToString(t))
+                    .icon(MaterialIcons.WARNING)
+                    .color(PersonalizationHandler.getColor(Personalization.KEY_COLOR_WARNING)));
         });
         super.addNotification(NotificationsGeneralType.NOTIFICATION_LOGIN, (Object t) -> {
-            DialogNotificationToastGeneral.from(
-                    PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION),
-                    Resource.getString("msg.default_config.login.welcome") + "\n" + objectToString(t),
-                    MaterialIcons.PERSON,
-                    PersonalizationHandler.getColor(Personalization.KEY_COLOR_INFO));
+            NotificationFactory.buildNotificationTOAST(NotificationBuilder.builder().
+                    delaySeconds(PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION))
+                    .text(Resource.getString("msg.default_config.login.welcome") + "\n" + objectToString(t))
+                    .icon(MaterialIcons.PERSON)
+                    .color(PersonalizationHandler.getColor(Personalization.KEY_COLOR_INFO)));
         });
     }
 
