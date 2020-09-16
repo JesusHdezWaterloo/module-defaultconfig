@@ -1,17 +1,15 @@
 package com.jhw.modules.default_config;
 
 import com.clean.core.app.services.ExceptionHandler;
-import com.clean.swing.app.AbstractSwingApplication;
-import com.clean.swing.app.AbstractSwingMainModule;
+import com.clean.swing.app.DefaultAbstractSwingMainModule;
 import java.net.MalformedURLException;
 
-public class DefaultConfigSwingModule implements AbstractSwingMainModule {
+public class DefaultConfigSwingModule extends DefaultAbstractSwingMainModule {
 
-    public DefaultConfigSwingModule() {
+    private DefaultConfigSwingModule() {
     }
 
-    @Override
-    public void register(AbstractSwingApplication app) {
+    public static DefaultConfigSwingModule init() {
         System.out.println("Creando 'Configuracion por defecto'");
         GeneralExceptionHandler.init();
         GeneralNotificationService.init();//notificacenes por defecto
@@ -20,16 +18,7 @@ public class DefaultConfigSwingModule implements AbstractSwingMainModule {
         } catch (MalformedURLException ex) {
             ExceptionHandler.handleException(ex);
         }
-    }
-
-    /**
-     * Dont need navigation
-     *
-     * @param string
-     * @param o
-     */
-    @Override
-    public void navigateTo(String string, Object... o) {
+        return new DefaultConfigSwingModule();
     }
 
 }

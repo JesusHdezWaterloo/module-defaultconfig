@@ -34,34 +34,26 @@ public class GeneralExceptionHandler extends ExceptionHandlerServiceFunctional {
 
     @Override
     protected void addAll() {
-        addHandler(ExceptionsGeneralType.EXCEPTION_VALIDATION, (Exception e) -> {
+        addHandler(ExceptionsGeneralType.EXCEPTION_VALIDATION, (Throwable e) -> {
             Notification.showNotification(NotificationsGeneralType.NOTIFICATION_ERROR, e.getMessage());
         });
-        addHandler(ExceptionsGeneralType.EXCEPTION_VALIDATION_X, (Exception e) -> {
+        addHandler(ExceptionsGeneralType.EXCEPTION_VALIDATION_X, (Throwable e) -> {
             Notification.showNotification(NotificationsGeneralType.NOTIFICATION_ERROR,
                     Resource.getString(ExceptionsGeneralType.MSG_JAVAX_VALIDATION));
         });
-        addHandler(ExceptionsGeneralType.EXCEPTION_JPA_INTEGRITY, (Exception e) -> {
+        addHandler(ExceptionsGeneralType.EXCEPTION_RUNTIME, (Throwable e) -> {
             Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
-                    Resource.getString(ExceptionsGeneralType.MSG_JPA_INTEGRITY));
+                    e.getMessage());
         });
-        addHandler(ExceptionsGeneralType.EXCEPTION_JPA_NON_EXISTING_ENTITY, (Exception e) -> {
-            Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
-                    Resource.getString(ExceptionsGeneralType.MSG_JPA_NON_EXISTING_ENTITY));
-        });
-        addHandler(ExceptionsGeneralType.EXCEPTION_MALFORMED_URL, (Exception e) -> {
+        addHandler(ExceptionsGeneralType.EXCEPTION_MALFORMED_URL, (Throwable e) -> {
             Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
                     Resource.getString(ExceptionsGeneralType.MSG_MALFORMED_URL));
             ExceptionHandlerUtil.saveException(file, e);
         });
-        addHandler(ExceptionsGeneralType.EXCEPTION_RUNTIME, (Exception e) -> {
-            Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
-                    e.getMessage());
-        });
         addHandler(ExceptionsGeneralType.EXCEPTION, general);
     }
 
-    private final Consumer<Exception> general = (Exception e) -> {
+    private final Consumer<Throwable> general = (Throwable e) -> {
         Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
                 Resource.getString("msg.default_config.error.exception") + "\n" + e.getMessage());
         ExceptionHandlerUtil.saveException(file, e);
