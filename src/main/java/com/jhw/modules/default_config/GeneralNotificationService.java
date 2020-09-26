@@ -12,9 +12,11 @@ import com.clean.core.app.services.Notification;
 import com.clean.core.domain.services.Resource;
 import com.jhw.personalization.core.domain.Personalization;
 import com.jhw.personalization.services.PersonalizationHandler;
+import com.jhw.swing.material.standards.MaterialColors;
 import com.jhw.swing.material.standards.MaterialImages;
 import com.jhw.swing.notification.NotificationBuilder;
 import com.jhw.swing.notification.NotificationFactory;
+import com.jhw.swing.notification.NotificationLocation;
 import com.jhw.utils.interfaces.Formateable;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -96,6 +98,14 @@ public class GeneralNotificationService extends NotificationServiceFunctional {
                     .text(Resource.getString("msg.default_config.login.welcome") + "\n" + objectToString(t))
                     .icon(MaterialIcons.PERSON)
                     .color(PersonalizationHandler.getColor(Personalization.KEY_COLOR_INFO)));
+        });
+        super.addNotification(NotificationsGeneralType.NOTIFICATION_SIMPLE_TEXT, (Object t) -> {
+            NotificationFactory.buildTextTOAST(NotificationBuilder.builder().
+                    delaySeconds(PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION))
+                    .location(NotificationLocation.DOWN_CENTER)
+                    .text(objectToString(t))
+                    .color(MaterialColors.GREY_900));
+
         });
     }
 
