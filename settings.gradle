@@ -15,9 +15,6 @@ project(':swing-derivable_icons').projectDir = "E:\\Trabajos\\Projects\\GIT Proj
 include ':swing-material-core'
 project(':swing-material-core').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\swing-material-core" as File
 
-include ':swing-material-model'
-project(':swing-material-model').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\swing-material-model" as File
-
 include ':swing-material-notifications'
 project(':swing-material-notifications').projectDir = "E:\\Trabajos\\Projects\\GIT Projects Gradle\\swing-material-notifications" as File
 
