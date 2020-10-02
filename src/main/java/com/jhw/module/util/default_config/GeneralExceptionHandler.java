@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jhw.modules.default_config;
+package com.jhw.module.util.default_config;
 
 import com.clean.core.app.services.ExceptionHandler;
 import com.clean.core.app.services.ExceptionHandlerServiceFunctional;
