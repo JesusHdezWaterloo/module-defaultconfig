@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.jhw.modules.default_config'
+group = 'com.jhw.module.util'
 
 repositories {
     jcenter()

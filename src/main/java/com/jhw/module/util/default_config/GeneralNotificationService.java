@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jhw.modules.default_config;
+package com.jhw.module.util.default_config;
 
 import com.clean.core.app.services.NotificationServiceFunctional;
 import com.jhw.swing.material.standards.MaterialIcons;
 import com.clean.core.app.services.NotificationsGeneralType;
 import com.clean.core.app.services.Notification;
 import com.clean.core.domain.services.Resource;
-import com.jhw.personalization.core.domain.Personalization;
-import com.jhw.personalization.services.PersonalizationHandler;
+import com.jhw.module.util.personalization.core.domain.Personalization;
+import com.jhw.module.util.personalization.services.PersonalizationHandler;
 import com.jhw.swing.material.standards.MaterialColors;
 import com.jhw.swing.material.standards.MaterialImages;
 import com.jhw.swing.notification.NotificationBuilder;

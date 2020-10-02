@@ -1,4 +1,4 @@
-package com.jhw.modules.default_config;
+package com.jhw.module.util.default_config;
 
 import com.clean.core.app.services.ExceptionHandler;
 import com.clean.swing.app.DefaultAbstractSwingMainModule;
