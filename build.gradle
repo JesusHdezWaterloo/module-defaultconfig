@@ -4,6 +4,8 @@ plugins {
 
 group = 'com.jhw.module.util'
 
+version = '1.2.0.SNAPSHOT.20201114'
+
 repositories {
     jcenter()
 }
