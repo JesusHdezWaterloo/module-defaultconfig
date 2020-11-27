@@ -128,12 +128,12 @@ public class GeneralNotificationService extends NotificationServiceFunctional {
         super.addConfirmDialog(NotificationsGeneralType.CONFIRM_DELETE, (Object t)
                 -> showConfirmDialogDelete(t));
         super.addConfirmDialog(NotificationsGeneralType.CONFIRM_CANCEL, (Object t)
-                -> JOptionPane.showConfirmDialog(null, "Seguro desea cancelar ?",
+                -> JOptionPane.showConfirmDialog(null, "Seguro desea cancelar ?" + objectToString(t, true),
                         "Cancel",
                         JOptionPane.OK_CANCEL_OPTION,
                         JOptionPane.ERROR_MESSAGE) == 0);
         super.addConfirmDialog(NotificationsGeneralType.CONFIRM_CONTINUE, (Object t)
-                -> JOptionPane.showConfirmDialog(null, "Seguro desea continuar ?",
+                -> JOptionPane.showConfirmDialog(null, "Seguro desea continuar ?" + objectToString(t, true),
                         "Terminar",
                         JOptionPane.OK_CANCEL_OPTION,
                         JOptionPane.QUESTION_MESSAGE) == 0);
@@ -192,16 +192,22 @@ public class GeneralNotificationService extends NotificationServiceFunctional {
         if (obj == null) {
             toString = "";
         } else if (obj instanceof String) {
-            return (String) obj;
+            toString = (String) obj;
+            if (ln) {
+                toString = "\n" + toString;
+            }
         } else if (obj instanceof Formateable) {
             toString = ((Formateable) obj).format();
+            if (ln) {
+                toString = "\n" + toString;
+            }
         } else {
             toString = obj.toString().trim();
+            toString = toString.isEmpty() ? "" : "\'" + toString.toUpperCase() + "\'";
         }
-        String finall = toString.isEmpty() ? "" : "\'" + toString.toUpperCase() + "\'";
         if (ln) {
-            finall += "\n";
+            toString += "\n";
         }
-        return finall;
+        return toString;
     }
 }
