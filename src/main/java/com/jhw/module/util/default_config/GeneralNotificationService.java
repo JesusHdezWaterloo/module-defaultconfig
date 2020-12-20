@@ -99,6 +99,13 @@ public class GeneralNotificationService extends NotificationServiceFunctional {
                     .icon(MaterialIcons.PERSON)
                     .color(PersonalizationHandler.getColor(Personalization.KEY_COLOR_INFO)));
         });
+        super.addNotification(NotificationsGeneralType.NOTIFICATION_LOGOUT, (Object t) -> {
+            NotificationFactory.buildNotificationTOAST(NotificationBuilder.builder().
+                    delaySeconds(PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION))
+                    .text(Resource.getString("msg.default_config.logout.bye") + "\n" + objectToString(t))
+                    .icon(MaterialIcons.PERSON)
+                    .color(PersonalizationHandler.getColor(Personalization.KEY_COLOR_INFO)));
+        });
         super.addNotification(NotificationsGeneralType.NOTIFICATION_SIMPLE_TEXT, (Object t) -> {
             NotificationFactory.buildTextTOAST(NotificationBuilder.builder().
                     delaySeconds(PersonalizationHandler.getInt(Personalization.KEY_INT_NOTIFICATION_DURATION))
