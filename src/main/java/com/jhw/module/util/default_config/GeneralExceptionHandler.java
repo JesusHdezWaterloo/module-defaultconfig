@@ -28,10 +28,6 @@ public class GeneralExceptionHandler extends ExceptionHandlerServiceFunctional {
         return excep;
     }
 
-    public GeneralExceptionHandler() {
-        addAll();
-    }
-
     @Override
     protected void addAll() {
         addHandler(ExceptionsGeneralType.EXCEPTION_VALIDATION, (Throwable e) -> {
@@ -50,12 +46,11 @@ public class GeneralExceptionHandler extends ExceptionHandlerServiceFunctional {
                     Resource.getString(ExceptionsGeneralType.MSG_MALFORMED_URL));
             ExceptionHandlerUtil.saveException(file, e);
         });
-        addHandler(ExceptionsGeneralType.EXCEPTION, general);
+        addHandler(ExceptionsGeneralType.EXCEPTION, (Throwable e) -> {
+            Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
+                    Resource.getString("msg.default_config.error.exception") + "\n" + e.getMessage());
+            ExceptionHandlerUtil.saveException(file, e);
+        });
     }
 
-    private final Consumer<Throwable> general = (Throwable e) -> {
-        Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
-                Resource.getString("msg.default_config.error.exception") + "\n" + e.getMessage());
-        ExceptionHandlerUtil.saveException(file, e);
-    };
 }
