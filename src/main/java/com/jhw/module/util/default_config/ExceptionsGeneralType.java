@@ -5,8 +5,8 @@
  */
 package com.jhw.module.util.default_config;
 
-import com.clean.core.app.services.ExceptionHandlerServiceFunctional;
-import com.clean.core.exceptions.ValidationException;
+import com.root101.clean.core.app.services.ExceptionHandlerServiceFunctional;
+import com.root101.clean.core.exceptions.ValidationException;
 import java.net.MalformedURLException;
 import javax.validation.ConstraintViolationException;
 

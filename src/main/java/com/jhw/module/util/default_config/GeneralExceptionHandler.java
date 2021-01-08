@@ -5,14 +5,14 @@
  */
 package com.jhw.module.util.default_config;
 
-import com.clean.core.app.services.ExceptionHandler;
-import com.clean.core.app.services.ExceptionHandlerServiceFunctional;
-import com.clean.core.app.services.Notification;
-import com.clean.core.app.services.NotificationsGeneralType;
-import com.clean.core.domain.services.Resource;
-import com.jhw.utils.exceptions.ExceptionHandlerUtil;
+import com.root101.clean.core.app.services.ExceptionHandler;
+import com.root101.clean.core.app.services.ExceptionHandlerServiceFunctional;
+import com.root101.clean.core.app.services.NotificationHandler;
+import com.root101.clean.core.app.services.NotificationsGeneralType;
+import com.root101.clean.core.domain.services.ResourceHandler;
+import com.root101.utils.exceptions.ExceptionHandlerUtil;
+import com.root101.utils.exceptions.ExceptionHandlerUtil;
 import java.io.File;
-import java.util.function.Consumer;
 
 /**
  *
@@ -24,31 +24,31 @@ public class GeneralExceptionHandler extends ExceptionHandlerServiceFunctional {
 
     public static GeneralExceptionHandler init() {
         GeneralExceptionHandler excep = new GeneralExceptionHandler();
-        ExceptionHandler.registerExceptionHandlerService(excep);
+        ExceptionHandler.registerExceptionService(excep);
         return excep;
     }
 
     @Override
     protected void addAll() {
         addHandler(ExceptionsGeneralType.EXCEPTION_VALIDATION, (Throwable e) -> {
-            Notification.showNotification(NotificationsGeneralType.NOTIFICATION_ERROR, e.getMessage());
+            NotificationHandler.showNotification(NotificationsGeneralType.NOTIFICATION_ERROR, e.getMessage());
         });
         addHandler(ExceptionsGeneralType.EXCEPTION_VALIDATION_X, (Throwable e) -> {
-            Notification.showNotification(NotificationsGeneralType.NOTIFICATION_ERROR,
-                    Resource.getString(ExceptionsGeneralType.MSG_JAVAX_VALIDATION));
+            NotificationHandler.showNotification(NotificationsGeneralType.NOTIFICATION_ERROR,
+                    ResourceHandler.getString(ExceptionsGeneralType.MSG_JAVAX_VALIDATION));
         });
         addHandler(ExceptionsGeneralType.EXCEPTION_RUNTIME, (Throwable e) -> {
-            Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
+            NotificationHandler.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
                     e.getMessage());
         });
         addHandler(ExceptionsGeneralType.EXCEPTION_MALFORMED_URL, (Throwable e) -> {
-            Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
-                    Resource.getString(ExceptionsGeneralType.MSG_MALFORMED_URL));
+            NotificationHandler.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
+                    ResourceHandler.getString(ExceptionsGeneralType.MSG_MALFORMED_URL));
             ExceptionHandlerUtil.saveException(file, e);
         });
         addHandler(ExceptionsGeneralType.EXCEPTION, (Throwable e) -> {
-            Notification.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
-                    Resource.getString("msg.default_config.error.exception") + "\n" + e.getMessage());
+            NotificationHandler.showConfirmDialog(NotificationsGeneralType.CONFIRM_ERROR,
+                    ResourceHandler.getString("msg.default_config.error.exception") + "\n" + e.getMessage());
             ExceptionHandlerUtil.saveException(file, e);
         });
     }

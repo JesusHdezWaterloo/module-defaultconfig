@@ -1,7 +1,7 @@
 package com.jhw.module.util.default_config;
 
-import com.clean.core.app.services.ExceptionHandler;
-import com.clean.swing.app.DefaultAbstractSwingMainModule;
+import com.root101.clean.core.app.services.ExceptionHandler;
+import com.root101.clean.swing.app.DefaultAbstractSwingMainModule;
 import java.net.MalformedURLException;
 
 public class DefaultConfigSwingModule extends DefaultAbstractSwingMainModule {
