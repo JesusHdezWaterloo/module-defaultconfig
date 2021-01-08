@@ -2,12 +2,13 @@ plugins {
     id 'java'
 }
 
-group = 'com.jhw.module.util'
+group = 'com.root101.module.util'
 
-version = '1.3.0.SNAPSHOT.20201229'
+version = '1.9.9.SNAPSHOT.20210108'
 
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
