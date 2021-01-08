@@ -1,29 +1,41 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright 2021 Root101 (jhernandezb96@gmail.com, +53-5-426-8660).
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Or read it directly from LICENCE.txt file at the root of this project.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-package com.jhw.module.util.default_config;
+package com.root101.module.util.default_config;
 
-import com.clean.core.app.services.NotificationServiceFunctional;
-import com.jhw.swing.material.standards.MaterialIcons;
-import com.clean.core.app.services.NotificationsGeneralType;
-import com.clean.core.app.services.Notification;
-import com.clean.core.domain.services.Resource;
+import com.root101.clean.core.app.services.NotificationServiceFunctional;
+import com.root101.swing.material.standards.MaterialIcons;
+import com.root101.clean.core.app.services.NotificationsGeneralType;
+import com.root101.clean.core.app.services.NotificationHandler;
+import com.root101.clean.core.domain.services.ResourceHandler;
 import com.jhw.module.util.personalization.core.domain.Personalization;
 import com.jhw.module.util.personalization.services.PersonalizationHandler;
-import com.jhw.swing.material.standards.MaterialColors;
-import com.jhw.swing.material.standards.MaterialImages;
-import com.jhw.swing.notification.NotificationBuilder;
-import com.jhw.swing.notification.NotificationFactory;
-import com.jhw.swing.notification.NotificationLocation;
-import com.jhw.utils.interfaces.Formateable;
+import com.root101.swing.material.standards.MaterialColors;
+import com.root101.swing.material.standards.MaterialImages;
+import com.root101.swing.notification.NotificationBuilder;
+import com.root101.swing.notification.NotificationFactory;
+import com.root101.swing.notification.NotificationLocation;
+import com.root101.utils.interfaces.Formateable;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Jesus Hernandez Barrios (jhernandezb96@gmail.com)
+ * @author Root101 (jhernandezb96@gmail.com, +53-5-426-8660)
+ * @author JesusHdezWaterloo@Github
  */
 public class GeneralNotificationService extends NotificationServiceFunctional {
 
@@ -31,7 +43,7 @@ public class GeneralNotificationService extends NotificationServiceFunctional {
 
     public static GeneralNotificationService init() {
         GeneralNotificationService notif = new GeneralNotificationService();
-        Notification.registerNotificationService(notif);
+        NotificationHandler.registerNotificationService(notif);
         return notif;
     }
 
