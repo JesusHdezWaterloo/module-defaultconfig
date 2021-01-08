@@ -1,4 +1,4 @@
-package com.jhw.module.util.default_config;
+package com.root101.module.util.default_config;
 
 import com.root101.clean.core.domain.services.ResourceHandler;
 import com.root101.clean.core.domain.services.ResourceBundleUtils;

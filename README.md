@@ -1,7 +1,6 @@
 ## Modulo Util Default Config
 
-Módulo con las propiedades por defecto para controlar la UI, contiene los colores
-que se han predeterminado, iconos, uso o no de animaciones entro otras
+Módulo con las configuraciones por defecto, las notificaciones por defecto, la manera de procesar las diferentes excepciones entro otras
 
 ## Table of Contents
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jhw.module.util.default_config;
+package com.root101.module.util.default_config;
 
 import com.root101.clean.core.app.services.ExceptionHandlerServiceFunctional;
 import com.root101.clean.core.exceptions.ValidationException;
